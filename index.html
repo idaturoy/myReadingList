@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="./styles/style.css"/>
+        <script src="https://kit.fontawesome.com/2317bdbbff.js" crossorigin="anonymous"></script>
+        <title>My Reading List</title>
+    </head>
+    <body>
+        <div class="welcomeDiv">
+            <h1>Hi there,</h1><p>Welcome to your reading list. <br> Here you can create a book list, <br> add new books and keep track of <br> your reading goal.</p>
+            <button type="button" class="addBookBtn"><h2>Add a New Book</h2></button>
+        </div>
+        <form id="form">
+            <h2>Add a New Book</h2>
+            <button id="close-btn" type="button"><i class="far fa-times-circle"></i></button>
+
+            <ul>
+                <li>
+                    <label for="title">
+                        <span>Title</span>
+                        <input type="text" id="form-title">
+                    </label>                 
+                </li>
+                <li>
+                    <label for="author">
+                    <input type="text" id="form-author">
+                    <span>Author</span>
+                    </label>
+                </li>
+                <li>
+                    <label for="pages">
+                        <span>Pages</span>
+                        <input type="number" id="form-pages"></input>
+                    </label>
+                </li>
+                <li>
+                    <label for="summary">
+                        <span>Summary</span>
+                        <textarea id="msg" name="form-summary"></textarea>
+                    </label>
+                </li>
+                <li id="checkbox-readStat">
+                    <label for="readStatus">
+                        <input type="checkbox" id="form-readStatus" name="form-readStatus" value="read"></input>
+                        <span>Already read?</span>
+                    </label>
+                </li>
+            </ul>
+            <div>
+                <button id="submit-btn" type="submit">Add</button>
+            </div>
+        </form>
+        <div id=bookShelfTitle><h1>Books To Read</h1></div>
+        
+        <div class="bookShelf">
+<!--             <div class="bookDiv">
+                <p>Ida Turøy <br> by Ida Turøy</p>
+                <i class="fas fa-trash"></i>                    
+            </div>
+            <div class="bookDiv">
+                <p>Ida Turøy by Ida Turøy</p>
+                <i class="fas fa-trash"></i>                    
+            </div>
+            <div class="bookDiv">
+                <p>Ida Turøy by Ida Turøy</p>
+                <i class="fas fa-trash"></i>                    
+            </div>
+            <div class="bookDiv">
+                <p>Ida Turøy by Ida Turøy</p>
+                <i class="fas fa-trash"></i>                    
+            </div>
+            <div class="bookDiv">
+                <p>Ida Turøy by Ida Turøy</p>
+                <i class="fas fa-trash"></i>                    
+            </div>
+            <div class="bookDiv">
+                <p>Ida Turøy by Ida Turøy</p>
+                <i class="fas fa-trash"></i>                    
+            </div>
+            <div class="bookDiv">
+                <p>Ida Turøy by Ida Turøy</p>
+                <i class="fas fa-trash"></i>                    
+            </div> -->
+        </div>
+        <script type="module" src="./eventHandler.js"></script>
+    </body>
+</html>

@@ -1,0 +1,152 @@
+$primary-color: #e4eced; 
+$secondary-color: #a6d3c0; 
+
+
+* {
+    box-sizing: border-box;
+}
+body, html {
+    //background: #b5ced4;
+    min-height: 100vh;
+    font-family: "montserrat";
+    margin: 0rem;
+}
+
+/* html{
+  //background: $primary-color; 
+} */
+
+.welcomeDiv{
+  padding: 3rem;
+  background-image: url('img/pexels-karolina-grabowska-5706223.jpg');
+  background-size: cover;
+  background-position: 1rem -10rem;
+}
+
+.addBookBtn, #submit-btn{
+  width: 10rem;
+  border-radius: 3em;
+  background: $secondary-color;
+  margin: 0.5rem auto;
+
+  h2{
+    font-size: 0.8rem;
+  }
+}
+
+form {
+    margin: 3rem auto;
+    width: 24rem;
+    padding: 1em;
+    border: 1px solid rgba($color: #000000, $alpha: 0.08);
+    border-radius: 1em;
+    h2{
+      padding-left: inherit;
+    }
+    #close-btn{
+      border: none;
+      color: red;
+      font-size: 2rem;
+      cursor: pointer;
+      left: 20rem;
+      bottom: 5rem;
+      position: relative;
+      background-color: inherit;
+    }
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  li {
+    margin-top: 1em;
+    padding-left: 1rem;
+
+  }
+  
+  label {
+    /* Uniform size & alignment */
+    display: inline-block;
+    width: 10rem;
+  }
+  
+  input, textarea {
+    /* To make sure that all text fields have the same font settings
+       By default, textareas have a monospace font */
+    font: 1em sans-serif;
+  
+    /* Uniform text field size */
+    width: 300px;
+    box-sizing: border-box;
+  
+    /* Match form field borders */
+    border: 0.2rem solid rgba($color: #000000, $alpha: 0.08);
+    height: 2rem;
+  }
+  
+  input:focus,
+  textarea:focus {
+    /* Additional highlight for focused elements */
+    border-color: $secondary-color;
+  }
+  
+  textarea {
+    /* Align multiline text fields with their labels */
+    vertical-align: top;
+    height: 5em;
+  }
+
+  
+  #submit-btn{
+    font-family: inherit;
+    font-size: 100%;
+    width : 10rem;
+    margin-left: 1rem;
+  }
+  #checkbox-readStat{
+    display: flex;
+    align-items: center;
+
+  }
+  #form-readStatus{
+    width: 1rem;
+    margin-right: 0.5rem;
+  }
+
+
+}
+
+
+#bookShelfTitle{
+  padding: 1rem 0 0 3rem; 
+}
+.bookShelf{
+  padding: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-content: space-between;
+  height: inherit;
+  width: 100%;
+}
+
+.bookDiv{
+  margin: 1rem;
+  border-radius: 1.5rem;
+  font-family: courier;
+  cursor: pointer;
+  min-width: 15rem;
+  min-height: 20rem;
+  background: $secondary-color;
+  display: flex;
+  padding: 1rem;
+
+  .readLabel{
+      opacity: 0.5;
+      font-family: inherit;
+      border-radius: inherit;
+      border: none;
+      align-items: reverse;
+  }
+}
