@@ -18,9 +18,21 @@ body, html {
 
 .welcomeDiv{
   padding: 3rem;
-  background-image: url('img/pexels-karolina-grabowska-5706223.jpg');
+  background-image: url('img/pexels-min-an-694740-blurred.jpg');
+  min-height: 10rem;
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
   background-size: cover;
-  background-position: 1rem -10rem;
+
+  .welcomeText{
+    background-color: rgba($color: #000000, $alpha: 0.5);
+
+  }
+  h1, p{
+    color: beige;
+  }
+
 }
 
 .addBookBtn, #submit-btn{
