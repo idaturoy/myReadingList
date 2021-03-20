@@ -81,14 +81,14 @@ function addBook(book){
     readLabel.innerHTML = `${book.readStatus}`;
     if (readLabel.innerText === 'read'){
         readLabel.style.color = "green";}
-    //Change the reading status of book and label color when clicked. 
+ 
     readLabel.addEventListener("click", () =>{
         if (readLabel.innerText === 'read'){
-            readLabel.innerText = 'not read yet'
+            readLabel.innerText = 'not read yet';
             readLabel.style.color = "black";
         }
         else if (readLabel.innerText === 'not read yet'){
-            readLabel.innerText = 'read'
+            readLabel.innerText = 'read';
             readLabel.style.color = "green";
         };
     })
@@ -97,10 +97,10 @@ function addBook(book){
     const removeBtn = document.createElement('button');
     removeBtn.innerHTML = '<i class="fas fa-trash"></i>'; 
     removeBtn.addEventListener("click", () => {
-        removeBookCard(removeBtn.parentNode.id);
-        removeFromMyLibrary(removeBtn.parentNode.id)
+        removeBookCard(removeBtn.parentNode.parentNode.id);
+        removeFromMyLibrary(removeBtn.parentNode.parentNode.id)
     });
-    //Insert div first
+    //Insert div at beginning
     let thefirstChild = divBookShelf.firstChild;
     featureDiv.appendChild(removeBtn);
     bookDiv.appendChild(featureDiv);
@@ -117,14 +117,17 @@ function removeBookCard(bookDivID){
     document.getElementById(`${bookDivID}`).remove();
 }
 
-function removeFromMyLibrary(bookID){
-    let removeIndex = myLibrary.map(item =>{
-        return item.bookID;
-    }).indexOf(bookID);
-    
+function removeFromMyLibrary(bookDivID){
+    let removeIndex = getBookInMyLibrary(bookDivID);
     myLibrary.splice(removeIndex, 1)
     console.log(myLibrary)
     saveToLocalStorage();
+}
+
+function getBookInMyLibrary(bookDivID){
+   return myLibrary.map(item =>{
+        return item.bookID;
+    }).indexOf(bookDivID);
 }
 
 const saveToLocalStorage = () => {
