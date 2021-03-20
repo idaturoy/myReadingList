@@ -4,8 +4,6 @@ const divBookShelf = document.getElementsByClassName("bookShelf")[0];
 //let myLibrary = [];
 let myLibrary = JSON.parse(localStorage.getItem("myLibrary"));
 
-import "./script-2.0.js";
-
 //EVENT LISTENERS
 document.getElementsByClassName("addBookBtn")[0].addEventListener("click", function(){
     document.getElementById("form").hidden = false;
@@ -139,22 +137,3 @@ window.onload = function displayMyLibrary(){
         localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
      }
 }
-
-
-
-
-
-
-
-/* //This is for testing the display
-const theHobbit = new Book('the hobbit', 'J.R.R Tolkien', 295, 'not read yet');
-const book1 = new Book('sapiens', 'Yuval Noah Harari', 443, 'read');
-const book2 = new Book('atomic habits', 'james clear', 320, 'not read yet');
-const book3 = new Book('Los herederos de la tierra', 'Ildefonso falcones', 896, 'not read yet');
-
-addBookToMyLibrary(theHobbit);
-addBookToMyLibrary(book1);
-addBookToMyLibrary(book2);
-addBookToMyLibrary(book3);
-
-// */
