@@ -170,6 +170,11 @@ form #form-readStatus {
           box-shadow: 12px 12px 2px 1px rgba(39, 174, 223, 0.2);
 }
 
+.bookDiv .bookInfo {
+  max-width: 10rem;
+  overflow-wrap: break-word;
+}
+
 .bookDiv .featureDiv {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;

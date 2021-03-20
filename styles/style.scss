@@ -157,6 +157,11 @@ form {
   justify-content: space-between;
   box-shadow: 12px 12px 2px 1px rgba(39, 174, 223, 0.2);
 
+  .bookInfo{
+    max-width: 10rem;
+    overflow-wrap: break-word;
+  }
+
   .featureDiv{
     justify-content: space-between;
     display: flex;
