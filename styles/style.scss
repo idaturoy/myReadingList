@@ -147,18 +147,30 @@ form {
   margin: 1rem;
   border-radius: 1.5rem;
   font-family: courier;
-  cursor: pointer;
+  //cursor: pointer;
   min-width: 15rem;
   min-height: 20rem;
   background: $secondary-color;
   display: flex;
   padding: 1rem;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 12px 12px 2px 1px rgba(39, 174, 223, 0.2);
+
+  .featureDiv{
+    justify-content: space-between;
+    display: flex;
+  }
 
   .readLabel{
       opacity: 0.5;
-      font-family: inherit;
-      border-radius: inherit;
-      border: none;
-      align-items: reverse;
+      width: fit-content;
+      cursor: pointer;
+  }
+  button{
+    width: fit-content;
+    border: none;
+    cursor: pointer;
+    background-color: inherit;
   }
 }

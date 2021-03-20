@@ -7,6 +7,7 @@ let myLibrary = JSON.parse(localStorage.getItem("myLibrary"));
 //EVENT LISTENERS
 document.getElementsByClassName("addBookBtn")[0].addEventListener("click", function(){
     document.getElementById("form").hidden = false;
+    
 }, false);
 
 document.getElementById("close-btn").addEventListener("click", function(){
@@ -20,6 +21,7 @@ form.addEventListener("submit", e =>{
     saveToLocalStorage();
     form.reset();
     e.preventDefault();
+    document.getElementById("form").hidden = true;
 })
 
 // FUNCTIONS
@@ -70,7 +72,10 @@ function addBook(book){
 
     bookInfo.innerHTML = `<h2>${book.title}</h2> <br> ${book.author} <br> ${book.pages} pages`;
     bookDiv.appendChild(bookInfo);
-    //Create the reading status label
+    
+    let featureDiv = document.createElement('div');
+    featureDiv.className = 'featureDiv';
+
     let readLabel = document.createElement('label');
     readLabel.className = 'readLabel';
     readLabel.innerHTML = `${book.readStatus}`;
@@ -87,7 +92,7 @@ function addBook(book){
             readLabel.style.color = "green";
         };
     })
-    bookDiv.appendChild(readLabel);
+    featureDiv.appendChild(readLabel);
 
     const removeBtn = document.createElement('button');
     removeBtn.innerHTML = '<i class="fas fa-trash"></i>'; 
@@ -97,8 +102,8 @@ function addBook(book){
     });
     //Insert div first
     let thefirstChild = divBookShelf.firstChild;
-    bookDiv.appendChild(removeBtn);
-
+    featureDiv.appendChild(removeBtn);
+    bookDiv.appendChild(featureDiv);
     //Finally, add the book to the bookshelf
     divBookShelf.insertBefore(bookDiv, thefirstChild);
 } 

@@ -152,7 +152,6 @@ form #form-readStatus {
   margin: 1rem;
   border-radius: 1.5rem;
   font-family: courier;
-  cursor: pointer;
   min-width: 15rem;
   min-height: 20rem;
   background: #a6d3c0;
@@ -160,15 +159,40 @@ form #form-readStatus {
   display: -ms-flexbox;
   display: flex;
   padding: 1rem;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-shadow: 12px 12px 2px 1px rgba(39, 174, 223, 0.2);
+          box-shadow: 12px 12px 2px 1px rgba(39, 174, 223, 0.2);
+}
+
+.bookDiv .featureDiv {
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .bookDiv .readLabel {
   opacity: 0.5;
-  font-family: inherit;
-  border-radius: inherit;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  cursor: pointer;
+}
+
+.bookDiv button {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
   border: none;
-  -webkit-box-align: reverse;
-      -ms-flex-align: reverse;
-          align-items: reverse;
+  cursor: pointer;
+  background-color: inherit;
 }
 /*# sourceMappingURL=style.css.map */
