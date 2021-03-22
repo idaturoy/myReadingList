@@ -2,4 +2,5 @@ credits.txt
 objectCreate.js
 objectCreate.test.js
 .DS_Store
-style.css.map
+styles/style.css.map
+
