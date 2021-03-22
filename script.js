@@ -16,7 +16,7 @@ document.getElementById("close-btn").addEventListener("click", function(){
 
 form.addEventListener("submit", e =>{
     let newBook = createNewBook();
-    addBookToMyLibrary(newBook);
+    addBookToLibrary(newBook);
     addBook(newBook);
     saveToLocalStorage();
     form.reset();
@@ -57,7 +57,7 @@ function capitalizeNames(title, authorName){
     return [titleCapitalized, authorArray.join(" ")]
 }
 
-function addBookToMyLibrary(book){
+function addBookToLibrary(book){
     myLibrary.push(book);
     const currentTime = new Date();
     book.bookID = currentTime.getTime();
@@ -98,7 +98,7 @@ function addBook(book){
     removeBtn.innerHTML = '<i class="fas fa-trash"></i>'; 
     removeBtn.addEventListener("click", () => {
         removeBookCard(removeBtn.parentNode.parentNode.id);
-        removeFromMyLibrary(removeBtn.parentNode.parentNode.id)
+        removeFromLibrary(removeBtn.parentNode.parentNode.id)
     });
     //Insert div at beginning
     let thefirstChild = divBookShelf.firstChild;
@@ -117,10 +117,9 @@ function removeBookCard(bookDivID){
     document.getElementById(`${bookDivID}`).remove();
 }
 
-function removeFromMyLibrary(bookDivID){
-    let removeIndex = getBookInMyLibrary(bookDivID);
+function removeFromLibrary(bookDivID){
+    let removeIndex = getBookIndex(bookDivID);
     myLibrary.splice(removeIndex, 1)
-    console.log(myLibrary)
     saveToLocalStorage();
 }
 
@@ -134,7 +133,7 @@ const saveToLocalStorage = () => {
     localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
 }
 
-window.onload = function displayMyLibrary(){
+window.onload = function displayLibrary(){
     if (myLibrary){
         for(let i = 0; i < myLibrary.length; i++){
             addBook(myLibrary[i]);
@@ -142,6 +141,6 @@ window.onload = function displayMyLibrary(){
     
     }else {
         let myLibrary = [];
-        localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
+        saveToLocalStorage();
      }
 }
