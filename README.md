@@ -5,6 +5,7 @@ What's up next:
 #1 Debug session
 #2 Better responsiveness and general layout
 #3 Add comment field at book card
+#4 Form validation 
 
 Possible ideas: 
 #1 Create a reading goal section
