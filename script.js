@@ -91,6 +91,8 @@ function addBook(book){
             readLabel.innerText = 'read';
             readLabel.style.color = "green";
         };
+
+        toggleReadStatus(removeBtn.parentNode.parentNode.id, readLabel.innerText);
     })
     featureDiv.appendChild(readLabel);
 
@@ -113,6 +115,12 @@ function isChecked(){
     return 'not read yet'
 }
 
+function getBookIndex(bookDivID){
+    return myLibrary.map(book =>{
+        return book.bookID;
+    }).indexOf(Number(bookDivID));
+ }
+
 function removeBookCard(bookDivID){
     document.getElementById(`${bookDivID}`).remove();
 }
@@ -123,10 +131,11 @@ function removeFromLibrary(bookDivID){
     saveToLocalStorage();
 }
 
-function getBookInMyLibrary(bookDivID){
-   return myLibrary.map(item =>{
-        return item.bookID;
-    }).indexOf(bookDivID);
+function toggleReadStatus(bookDivID, newStatus){
+    const indexBookToToggle = getBookIndex(bookDivID);
+    myLibrary[indexBookToToggle].readStatus = newStatus;
+    saveToLocalStorage();
+
 }
 
 const saveToLocalStorage = () => {
