@@ -2,12 +2,10 @@
 const form = document.getElementById("form");
 const divBookShelf = document.getElementsByClassName("bookShelf")[0];
 //let myLibrary = [];
-let myLibrary = JSON.parse(localStorage.getItem("myLibrary"));
 
 //EVENT LISTENERS
 document.getElementsByClassName("addBookBtn")[0].addEventListener("click", function(){
     document.getElementById("form").hidden = false;
-    
 }, false);
 
 document.getElementById("close-btn").addEventListener("click", function(){
@@ -18,7 +16,6 @@ form.addEventListener("submit", e =>{
     let newBook = createNewBook();
     addBookToLibrary(newBook);
     addBook(newBook);
-    saveToLocalStorage();
     form.reset();
     e.preventDefault();
     document.getElementById("form").hidden = true;
@@ -58,9 +55,11 @@ function capitalizeNames(title, authorName){
 }
 
 function addBookToLibrary(book){
+    let myLibrary = getLibrary();
     myLibrary.push(book);
     const currentTime = new Date();
     book.bookID = currentTime.getTime();
+    saveToLocalStorage(myLibrary);
 }
 
 function addBook(book){
@@ -116,10 +115,11 @@ function isChecked(){
 }
 
 function getBookIndex(bookDivID){
+    let myLibrary = getLibrary();
     return myLibrary.map(book =>{
         return book.bookID;
     }).indexOf(Number(bookDivID));
- }
+}
 
 function removeBookCard(bookDivID){
     document.getElementById(`${bookDivID}`).remove();
@@ -127,29 +127,35 @@ function removeBookCard(bookDivID){
 
 function removeFromLibrary(bookDivID){
     let removeIndex = getBookIndex(bookDivID);
+    let myLibrary = getLibrary();
     myLibrary.splice(removeIndex, 1)
-    saveToLocalStorage();
+    saveToLocalStorage(myLibrary);
 }
 
 function toggleReadStatus(bookDivID, newStatus){
     const indexBookToToggle = getBookIndex(bookDivID);
+    let myLibrary = getLibrary();
     myLibrary[indexBookToToggle].readStatus = newStatus;
-    saveToLocalStorage();
-
+    saveToLocalStorage(myLibrary);
 }
-
-const saveToLocalStorage = () => {
-    localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
+function getLibrary(){
+    let myLibrary;
+    if(localStorage.getItem('myLibrary') === null){
+        myLibrary = [];
+    }else{
+        myLibrary = JSON.parse(localStorage.getItem("myLibrary"));
+    }
+    return myLibrary;
+}
+const saveToLocalStorage = (libraryToStore) => {
+    localStorage.setItem("myLibrary", JSON.stringify(libraryToStore));
 }
 
 window.onload = function displayLibrary(){
-    if (myLibrary){
+    if (localStorage.getItem('myLibrary') !== null){
+        let myLibrary = JSON.parse(localStorage.getItem("myLibrary"));
         for(let i = 0; i < myLibrary.length; i++){
             addBook(myLibrary[i]);
         }
-    
-    }else {
-        let myLibrary = [];
-        saveToLocalStorage();
-     }
+    }
 }
