@@ -152,8 +152,8 @@ const saveToLocalStorage = (libraryToStore) => {
 }
 
 window.onload = function displayLibrary(){
-    if (localStorage.getItem('myLibrary') !== null){
-        let myLibrary = JSON.parse(localStorage.getItem("myLibrary"));
+    let myLibrary = getLibrary();
+    if (myLibrary !== null){
         for(let i = 0; i < myLibrary.length; i++){
             addBook(myLibrary[i]);
         }
