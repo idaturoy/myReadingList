@@ -1,52 +1,38 @@
 * {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+  font-family: "courier";
 }
 
 body, html {
+  background: #ffffff;
   min-height: 100vh;
-  font-family: "montserrat";
   margin: 0rem;
 }
 
-/* html{
-  //background: $primary-color; 
-} */
+body {
+  margin: 0 auto;
+  width: 80%;
+}
+
 .welcomeDiv {
-  padding: 3rem;
-  background-image: url("img/pexels-min-an-694740-blurred.jpg");
-  min-height: 10rem;
-  /* Center and scale the image nicely */
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+  padding: 3rem 3rem 0 3rem;
+  min-height: 4rem;
 }
 
-.welcomeDiv .welcomeText {
-  background-color: rgba(0, 0, 0, 0.5);
+.welcomeDiv p {
+  color: black;
+  opacity: 0.5;
 }
 
-.welcomeDiv h1, .welcomeDiv p {
-  color: beige;
-}
-
-.addBookBtn, #submit-btn {
-  width: 10rem;
-  border-radius: 3em;
-  background: #a6d3c0;
-  margin: 0.5rem auto;
-}
-
-.addBookBtn h2, #submit-btn h2 {
-  font-size: 0.8rem;
+#addBook-btn, #submit-btn {
+  display: inline-block;
+  border-style: none;
 }
 
 form {
-  margin: 3rem auto;
   width: 24rem;
-  padding: 1em;
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  border-radius: 1em;
+  padding: 1rem;
 }
 
 form h2 {
@@ -71,20 +57,20 @@ form ul {
 }
 
 form li {
-  margin-top: 1em;
+  margin-top: 1rem;
   padding-left: 1rem;
 }
 
 form label {
   /* Uniform size & alignment */
-  display: inline-block;
+  display: contents;
   width: 10rem;
 }
 
 form input, form textarea {
   /* To make sure that all text fields have the same font settings
        By default, textareas have a monospace font */
-  font: 1em sans-serif;
+  font: 1rem sans-serif;
   /* Uniform text field size */
   width: 300px;
   -webkit-box-sizing: border-box;
@@ -97,13 +83,13 @@ form input, form textarea {
 form input:focus,
 form textarea:focus {
   /* Additional highlight for focused elements */
-  border-color: #a6d3c0;
+  border-color: #ffffff;
 }
 
 form textarea {
   /* Align multiline text fields with their labels */
   vertical-align: top;
-  height: 5em;
+  height: 5rem;
 }
 
 form #submit-btn {
@@ -150,11 +136,11 @@ form #form-readStatus {
 
 .bookDiv {
   margin: 1rem;
-  border-radius: 1.5rem;
+  border-radius: 0.5rem;
   font-family: courier;
   min-width: 15rem;
-  min-height: 20rem;
-  background: #a6d3c0;
+  min-height: 15rem;
+  background: #06a6b5;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -166,8 +152,6 @@ form #form-readStatus {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  -webkit-box-shadow: 12px 12px 2px 1px rgba(39, 174, 223, 0.2);
-          box-shadow: 12px 12px 2px 1px rgba(39, 174, 223, 0.2);
 }
 
 .bookDiv .bookInfo {
@@ -186,6 +170,7 @@ form #form-readStatus {
 
 .bookDiv .readLabel {
   opacity: 0.5;
+  background-color: #06a6b5;
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
@@ -199,5 +184,87 @@ form #form-readStatus {
   border: none;
   cursor: pointer;
   background-color: inherit;
+}
+
+.tabs {
+  display: inline-block;
+  margin-left: 3rem;
+  border-radius: .5rem;
+  overflow: hidden;
+  -webkit-box-shadow: 0 4px 4px -2px rgba(0, 0, 0, 0.5);
+          box-shadow: 0 4px 4px -2px rgba(0, 0, 0, 0.5);
+}
+
+.tab {
+  width: 100%;
+  color: black;
+  overflow: hidden;
+}
+
+.tab-label {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 1em;
+  background: #06a6b5;
+  font-weight: bold;
+  cursor: pointer;
+  /* Icon */
+}
+
+.tab-label:hover {
+  background: #047984;
+}
+
+.tab-label::after {
+  content: "\276F";
+  width: 1em;
+  height: 1em;
+  text-align: center;
+  -webkit-transition: all .35s;
+  transition: all .35s;
+}
+
+.tab-content {
+  max-height: 0;
+  padding: 0 1em;
+  color: #06a6b5;
+  background: white;
+  -webkit-transition: all .35s;
+  transition: all .35s;
+}
+
+.tab-close {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  padding: 1em;
+  font-size: 0.75em;
+  background: #06a6b5;
+  cursor: pointer;
+}
+
+.tab-close:hover {
+  background: #047984;
+}
+
+input:checked + .tab-label {
+  background: #047984;
+}
+
+input:checked + .tab-label::after {
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
+}
+
+input:checked ~ .tab-content {
+  max-height: 100vh;
+  padding: 1em;
 }
 /*# sourceMappingURL=style.css.map */

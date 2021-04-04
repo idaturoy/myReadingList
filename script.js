@@ -1,16 +1,15 @@
 //VARIABLES
 const form = document.getElementById("form");
 const divBookShelf = document.getElementsByClassName("bookShelf")[0];
-//let myLibrary = [];
 
 //EVENT LISTENERS
-document.getElementsByClassName("addBookBtn")[0].addEventListener("click", function(){
+/* document.getElementById("addBook-btn").addEventListener("click", () => {
     document.getElementById("form").hidden = false;
-}, false);
+}, false); */
 
-document.getElementById("close-btn").addEventListener("click", function(){
+/* document.getElementById("close-btn").addEventListener("click", function(){
     document.getElementById("form").hidden = true;
-}, false);
+}, false); */
 
 form.addEventListener("submit", e =>{
     let newBook = createNewBook();
@@ -18,7 +17,7 @@ form.addEventListener("submit", e =>{
     addBook(newBook);
     form.reset();
     e.preventDefault();
-    document.getElementById("form").hidden = true;
+    //document.getElementById("form").hidden = true;
 })
 
 // FUNCTIONS
@@ -29,16 +28,18 @@ function createNewBook(){
         const title = document.getElementById('form-title').value;
         const author = document.getElementById('form-author').value;
         const pages = document.getElementById('form-pages').value;
+        const genre = document.getElementById('form-genre').value;
         const [titleCapitalized, authorCapitalized] = capitalizeNames(title, author);
     
-        const newBook = new Book(titleCapitalized, authorCapitalized, pages, isChecked());
+        const newBook = new Book(titleCapitalized, authorCapitalized, pages, genre, isChecked());
         return newBook;
 }
 
-function Book(title, author, pages, readStatus){
+function Book(title, author, pages, genre, readStatus){
     this.title = title;
     this.author = author;
     this.pages = pages;
+    this.genre = genre;
     this.readStatus = readStatus;
     this.bookID = undefined;
 }
@@ -69,7 +70,7 @@ function addBook(book){
     let bookInfo = document.createElement('p');
     bookInfo.className = 'bookInfo';
 
-    bookInfo.innerHTML = `<h2>${book.title}</h2> <br> ${book.author} <br> ${book.pages} pages`;
+    bookInfo.innerHTML = `<b>${book.title}</b> <br> ${book.author} <br> ${book.genre} <br> ${book.pages} pages`;
     bookDiv.appendChild(bookInfo);
     
     let featureDiv = document.createElement('div');
@@ -102,11 +103,11 @@ function addBook(book){
         removeFromLibrary(removeBtn.parentNode.parentNode.id)
     });
     //Insert div at beginning
-    let thefirstChild = divBookShelf.firstChild;
+    //const addBtnDiv = document.getElementById("addBook-btn");
     featureDiv.appendChild(removeBtn);
     bookDiv.appendChild(featureDiv);
     //Finally, add the book to the bookshelf
-    divBookShelf.insertBefore(bookDiv, thefirstChild);
+    divBookShelf.appendChild(bookDiv);
 } 
 
 function isChecked(){
@@ -138,6 +139,7 @@ function toggleReadStatus(bookDivID, newStatus){
     myLibrary[indexBookToToggle].readStatus = newStatus;
     saveToLocalStorage(myLibrary);
 }
+
 function getLibrary(){
     let myLibrary;
     if(localStorage.getItem('myLibrary') === null){
@@ -147,6 +149,7 @@ function getLibrary(){
     }
     return myLibrary;
 }
+
 const saveToLocalStorage = (libraryToStore) => {
     localStorage.setItem("myLibrary", JSON.stringify(libraryToStore));
 }

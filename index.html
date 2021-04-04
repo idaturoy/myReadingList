@@ -8,52 +8,64 @@
     </head>
     <body>
         <div class="welcomeDiv">
-            <h1>Hi there,</h1><p>Welcome to your reading list. <br> Here you can create a book list, <br> add new books and keep track of <br> your reading goal.</p>
-            <button type="button" class="addBookBtn"><h2>Add a New Book</h2></button>
+            <h1>Personal reading list</h1><p>You can create a book list and add new books for future read.</p>
         </div>
-        <form id="form" hidden>
-            <h2>Add a New Book</h2>
-            <button id="close-btn" type="button"><i class="far fa-times-circle"></i></button>
-
-            <ul>
-                <li>
-                    <label for="title">
-                        <span>Title</span>
-                        <input type="text" id="form-title">
-                    </label>                 
-                </li>
-                <li>
-                    <label for="author">
-                        <span>Author</span>
-                        <input type="text" id="form-author">
-                    </label>
-                </li>
-                <li>
-                    <label for="pages">
-                        <span>Pages</span>
-                        <input type="number" id="form-pages"></input>
-                    </label>
-                </li>
-                <li>
-                    <label for="summary">
-                        <span>Summary</span>
-                        <textarea id="msg" name="form-summary"></textarea>
-                    </label>
-                </li>
-                <li id="checkbox-readStat">
-                    <label for="readStatus">
-                        <input type="checkbox" id="form-readStatus" name="form-readStatus" value="read"></input>
-                        <span>Already read?</span>
-                    </label>
-                </li>
-            </ul>
-            <div>
-                <button id="submit-btn" type="submit">Add</button>
+        <div class="tabs">
+            <div class="tab">
+              <input type="checkbox" id="chck1" hidden>
+              <label class="tab-label" for="chck1">Add New Book</label>
+              <div class="tab-content">
+                <!-- Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsum, reiciendis! -->
+                <form id="form">
+                    <!-- <h2>Add a New Book</h2> -->
+                    <!-- <button id="close-btn" type="button"><i class="far fa-times-circle"></i></button> -->
+        
+                    <ul>
+                        <li>
+                            <label for="title">
+                                <span>Title</span>
+                                <input type="text" id="form-title">
+                            </label>                 
+                        </li>
+                        <li>
+                            <label for="author">
+                                <span>Author</span>
+                                <input type="text" id="form-author">
+                            </label>
+                        </li>
+                        <li>
+                            <label for="pages">
+                                <span>Pages</span>
+                                <input type="number" id="form-pages"></input>
+                            </label>
+                        </li>
+                        <li>
+                            <label for="genre">
+                                <span>Genre</span>
+                                <input type="text" id="form-genre"></input>
+                            </label>
+                        </li>
+                        <li id="checkbox-readStat">
+                            <label for="readStatus">
+                                <input type="checkbox" id="form-readStatus" name="form-readStatus" value="read"></input>
+                                <span>Already read?</span>
+                            </label>
+                        </li>
+                    </ul>
+                    <div>
+                        <button id="submit-btn" type="submit">Add</button>
+                    </div>
+                </form>
+              </div>
             </div>
-        </form>
-        <div id=bookShelfTitle><h1>Books To Read</h1></div>
+        </div>
+
+
+    <!-- <div id=bookShelfTitle><h1>Books To Read</h1></div> -->
         
         <div class="bookShelf">
+<!--             <button type="button" id="addBook-btn" class="bookDiv"><h2>Add a New Book</h2></button> -->
+
         </div>
         <script type="module" src="./script.js"></script>
     </body>

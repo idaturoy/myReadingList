@@ -1,57 +1,45 @@
-$primary-color: #e4eced; 
-$secondary-color: #a6d3c0; 
+$primary-color: #06a6b5; 
+$secondary-color: #ffffff; 
 
 
 * {
     box-sizing: border-box;
+    font-family: "courier";
+
 }
 body, html {
-    //background: #b5ced4;
+    background: $secondary-color;
     min-height: 100vh;
-    font-family: "montserrat";
     margin: 0rem;
+
 }
-
-/* html{
-  //background: $primary-color; 
-} */
-
+body{
+  margin: 0 auto;
+  width: 80%;
+}
 .welcomeDiv{
-  padding: 3rem;
-  background-image: url('img/pexels-min-an-694740-blurred.jpg');
-  min-height: 10rem;
-  /* Center and scale the image nicely */
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+  padding: 3rem 3rem 0 3rem;
+  min-height: 4rem;
 
-  .welcomeText{
-    background-color: rgba($color: #000000, $alpha: 0.5);
-
-  }
-  h1, p{
-    color: beige;
+  p{
+    color: black;
+    opacity: 0.5;
   }
 
 }
 
-.addBookBtn, #submit-btn{
-  width: 10rem;
-  border-radius: 3em;
-  background: $secondary-color;
-  margin: 0.5rem auto;
-
-  h2{
-    font-size: 0.8rem;
-  }
+#addBook-btn, #submit-btn{
+  display: inline-block;
+  border-style: none;
 }
 
 form {
-    margin: 3rem auto;
+    //margin: 3rem auto;
     width: 24rem;
-    padding: 1em;
-    border: 1px solid rgba($color: #000000, $alpha: 0.08);
-    border-radius: 1em;
+    padding: 1rem;
+    //border: 1px solid rgba($color: #000000, $alpha: 0.08);
+    //border-radius: 1rem;
+    //background-color: $primary-color;
     h2{
       padding-left: inherit;
     }
@@ -72,21 +60,21 @@ form {
   }
   
   li {
-    margin-top: 1em;
+    margin-top: 1rem;
     padding-left: 1rem;
 
   }
   
   label {
     /* Uniform size & alignment */
-    display: inline-block;
+    display: contents;
     width: 10rem;
   }
   
   input, textarea {
     /* To make sure that all text fields have the same font settings
        By default, textareas have a monospace font */
-    font: 1em sans-serif;
+    font: 1rem sans-serif;
   
     /* Uniform text field size */
     width: 300px;
@@ -106,7 +94,7 @@ form {
   textarea {
     /* Align multiline text fields with their labels */
     vertical-align: top;
-    height: 5em;
+    height: 5rem;
   }
 
   
@@ -145,17 +133,17 @@ form {
 
 .bookDiv{
   margin: 1rem;
-  border-radius: 1.5rem;
+  border-radius: 0.5rem;
   font-family: courier;
   //cursor: pointer;
   min-width: 15rem;
-  min-height: 20rem;
-  background: $secondary-color;
+  min-height: 15rem;
+  background: $primary-color;
   display: flex;
   padding: 1rem;
   flex-direction: column;
   justify-content: space-between;
-  box-shadow: 12px 12px 2px 1px rgba(39, 174, 223, 0.2);
+  //box-shadow: 12px 12px 2px 1px rgba(39, 174, 223, 0.2);
 
   .bookInfo{
     max-width: 10rem;
@@ -168,14 +156,79 @@ form {
   }
 
   .readLabel{
-      opacity: 0.5;
-      width: fit-content;
-      cursor: pointer;
+    opacity: 0.5;
+    background-color: $primary-color;
+    width: fit-content;
+    cursor: pointer;
   }
   button{
     width: fit-content;
     border: none;
     cursor: pointer;
     background-color: inherit;
+  }
+}
+
+.tabs {
+  display: inline-block;
+  margin-left: 3rem;
+  border-radius: .5rem;
+  overflow: hidden;
+  box-shadow: 0 4px 4px -2px rgba(0,0,0,0.5);
+}
+.tab {
+  width: 100%;
+  color: black;
+  overflow: hidden;
+  &-label {
+    display: flex;
+    justify-content: space-between;
+    padding: 1em;
+    background: $primary-color;
+    font-weight: bold;
+    cursor: pointer;
+    /* Icon */
+    &:hover {
+      background: darken($primary-color, 10%);
+    }
+    &::after {
+      content: "\276F";
+      width: 1em;
+      height: 1em;
+      text-align: center;
+      transition: all .35s;
+    }
+  }
+  &-content {
+    max-height: 0;
+    padding: 0 1em;
+    color: $primary-color;
+    background: white;
+    transition: all .35s;
+  }
+  &-close {
+    display: flex;
+    justify-content: flex-end;
+    padding: 1em;
+    font-size: 0.75em;
+    background: $primary-color;
+    cursor: pointer;
+    &:hover {
+      background: darken($primary-color, 10%);
+    }
+  }
+}
+
+// :checked
+input:checked {
+  + .tab-label {
+    background: darken($primary-color, 10%);
+    &::after {
+      transform: rotate(90deg);
+    }
+  }
+  ~ .tab-content {
+    max-height: 100vh;
+    padding: 1em;
   }
 }
