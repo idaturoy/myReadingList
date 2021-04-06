@@ -2,61 +2,63 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" type="text/css" href="./styles/style.css"/>
         <script src="https://kit.fontawesome.com/2317bdbbff.js" crossorigin="anonymous"></script>
         <title>My Reading List</title>
     </head>
     <body>
         <div class="welcomeDiv">
-            <h1>Personal reading list</h1><p>You can create a book list and add new books for future read.</p>
+            <h1>Your reading list</h1><p id="welcome-text">Create a reading list and add books for future read.</p>
         </div>
-        <div class="tabs">
-            <div class="tab">
-              <input type="checkbox" id="chck1" hidden>
-              <label class="tab-label" for="chck1">Add New Book</label>
-              <div class="tab-content">
-                <!-- Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsum, reiciendis! -->
-                <form id="form">
-                    <!-- <h2>Add a New Book</h2> -->
-                    <!-- <button id="close-btn" type="button"><i class="far fa-times-circle"></i></button> -->
-        
-                    <ul>
-                        <li>
-                            <label for="title">
-                                <span>Title</span>
-                                <input type="text" id="form-title">
-                            </label>                 
-                        </li>
-                        <li>
-                            <label for="author">
-                                <span>Author</span>
-                                <input type="text" id="form-author">
-                            </label>
-                        </li>
-                        <li>
-                            <label for="pages">
-                                <span>Pages</span>
-                                <input type="number" id="form-pages"></input>
-                            </label>
-                        </li>
-                        <li>
-                            <label for="genre">
-                                <span>Genre</span>
-                                <input type="text" id="form-genre"></input>
-                            </label>
-                        </li>
-                        <li id="checkbox-readStat">
-                            <label for="readStatus">
-                                <input type="checkbox" id="form-readStatus" name="form-readStatus" value="read"></input>
-                                <span>Already read?</span>
-                            </label>
-                        </li>
-                    </ul>
-                    <div>
-                        <button id="submit-btn" type="submit">Add</button>
-                    </div>
-                </form>
-              </div>
+        <div id="center-container">
+            <div class="tabs">
+                <div class="tab">
+                <input type="checkbox" id="chck1" hidden>
+                <label class="tab-label" for="chck1"><h2>Add New Book</h2></label>
+                <div class="tab-content">
+                    <form id="form">
+                        <!-- <h2>Add a New Book</h2> -->
+                        <!-- <button id="close-btn" type="button"><i class="far fa-times-circle"></i></button> -->
+            
+                        <ul>
+                            <li>
+                                <label for="title">
+                                    <span>Title</span>
+                                    <input type="text" id="form-title">
+                                </label>                 
+                            </li>
+                            <li>
+                                <label for="author">
+                                    <span>Author</span>
+                                    <input type="text" id="form-author">
+                                </label>
+                            </li>
+                            <li>
+                                <label for="pages">
+                                    <span>Pages</span>
+                                    <input type="number" id="form-pages"></input>
+                                </label>
+                            </li>
+                            <li>
+                                <label for="genre">
+                                    <span>Genre</span>
+                                    <input type="text" id="form-genre"></input>
+                                </label>
+                            </li>
+                            <li id="checkbox-readStat">
+                                <label for="readStatus">
+                                    <input type="checkbox" id="form-readStatus" name="form-readStatus" value="read"></input>
+                                    <span>Already read?</span>
+                                </label>
+                            </li>
+                        </ul>
+                        <div id='div-center-btn' class='round-style'>
+                            <button id="submit-btn" type="submit">Add</button>
+                        </div>
+                    </form>
+                </div>
+                </div>
             </div>
         </div>
 

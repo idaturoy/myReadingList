@@ -1,11 +1,24 @@
 * {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+}
+
+h1, h2, p, span {
   font-family: "courier";
 }
 
+h2 {
+  font-size: 1rem;
+  margin: 0;
+}
+
+#welcome-text {
+  color: black;
+  opacity: 0.5;
+}
+
 body, html {
-  background: #ffffff;
+  background: #f9f8f7;
   min-height: 100vh;
   margin: 0rem;
 }
@@ -16,93 +29,185 @@ body {
 }
 
 .welcomeDiv {
-  padding: 3rem 3rem 0 3rem;
-  min-height: 4rem;
+  padding: 3rem 3rem 0.5rem 3rem;
+  text-align: center;
 }
 
-.welcomeDiv p {
-  color: black;
-  opacity: 0.5;
-}
-
-#addBook-btn, #submit-btn {
+#submit-btn {
   display: inline-block;
   border-style: none;
 }
 
-form {
-  width: 24rem;
+#center-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.tabs {
+  border-radius: .5rem;
+  overflow: hidden;
+  -webkit-box-shadow: 0 4px 4px -2px rgba(0, 0, 0, 0.5);
+          box-shadow: 0 4px 4px -2px rgba(0, 0, 0, 0.5);
+  width: 25rem;
+}
+
+.tab {
+  width: 100%;
+  color: black;
+  overflow: hidden;
+}
+
+.tab-label {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   padding: 1rem;
-}
-
-form h2 {
-  padding-left: inherit;
-}
-
-form #close-btn {
-  border: none;
-  color: red;
-  font-size: 2rem;
+  background: #aed8e7;
+  font-weight: bold;
   cursor: pointer;
-  left: 20rem;
-  bottom: 5rem;
-  position: relative;
-  background-color: inherit;
+  /* Icon */
+}
+
+.tab-label:hover {
+  background: #87c5db;
+}
+
+.tab-label::after {
+  content: "\276F";
+  width: 1rem;
+  height: 1rem;
+  text-align: center;
+  -webkit-transition: all .35s;
+  transition: all .35s;
+}
+
+.tab-content {
+  max-height: 0;
+  padding: 0 1rem;
+  background: white;
+  display: none;
+  -webkit-transition: all .35s;
+  transition: all .35s;
+}
+
+.tab-close {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  padding: 0rem;
+  font-size: 0.75rem;
+  background: #aed8e7;
+  cursor: pointer;
+}
+
+.tab-close:hover {
+  background: #87c5db;
+}
+
+input:checked + .tab-label {
+  background: #87c5db;
+}
+
+input:checked + .tab-label::after {
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
+}
+
+input:checked ~ .tab-content {
+  max-height: 100vh;
+  padding: 1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+form {
+  /*     #close-btn{
+      border: none;
+      color: red;
+      font-size: 2rem;
+      cursor: pointer;
+      left: 20rem;
+      bottom: 5rem;
+      position: relative;
+      background-color: inherit;
+    } */
 }
 
 form ul {
   list-style: none;
   padding: 0;
-  margin: 0;
 }
 
 form li {
   margin-top: 1rem;
-  padding-left: 1rem;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+form li span {
+  padding-right: 1rem;
 }
 
 form label {
-  /* Uniform size & alignment */
   display: contents;
-  width: 10rem;
 }
 
-form input, form textarea {
-  /* To make sure that all text fields have the same font settings
-       By default, textareas have a monospace font */
-  font: 1rem sans-serif;
-  /* Uniform text field size */
-  width: 300px;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  /* Match form field borders */
+form input {
+  width: 18rem;
   border: 0.2rem solid rgba(0, 0, 0, 0.08);
+  border-radius: 0.5rem;
   height: 2rem;
 }
 
-form input:focus,
-form textarea:focus {
-  /* Additional highlight for focused elements */
-  border-color: #ffffff;
+form input:focus {
+  outline: none;
+  border-color: #aed8e7;
 }
 
-form textarea {
-  /* Align multiline text fields with their labels */
-  vertical-align: top;
-  height: 5rem;
+form #div-center-btn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 form #submit-btn {
-  font-family: inherit;
   font-size: 100%;
   width: 10rem;
-  margin-left: 1rem;
+  border-radius: 0.5rem;
+  height: 2rem;
+  background-color: #87c5db;
+  font-weight: bold;
+  cursor: pointer;
 }
 
 form #checkbox-readStat {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -111,6 +216,7 @@ form #checkbox-readStat {
 form #form-readStatus {
   width: 1rem;
   margin-right: 0.5rem;
+  cursor: pointer;
 }
 
 #bookShelfTitle {
@@ -128,19 +234,20 @@ form #form-readStatus {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  -ms-flex-line-pack: justify;
-      align-content: space-between;
   height: inherit;
   width: 100%;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .bookDiv {
   margin: 1rem;
   border-radius: 0.5rem;
   font-family: courier;
-  min-width: 15rem;
+  min-width: 12rem;
   min-height: 15rem;
-  background: #06a6b5;
+  background: #aed8e7;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -170,7 +277,7 @@ form #form-readStatus {
 
 .bookDiv .readLabel {
   opacity: 0.5;
-  background-color: #06a6b5;
+  background-color: #aed8e7;
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
@@ -184,87 +291,5 @@ form #form-readStatus {
   border: none;
   cursor: pointer;
   background-color: inherit;
-}
-
-.tabs {
-  display: inline-block;
-  margin-left: 3rem;
-  border-radius: .5rem;
-  overflow: hidden;
-  -webkit-box-shadow: 0 4px 4px -2px rgba(0, 0, 0, 0.5);
-          box-shadow: 0 4px 4px -2px rgba(0, 0, 0, 0.5);
-}
-
-.tab {
-  width: 100%;
-  color: black;
-  overflow: hidden;
-}
-
-.tab-label {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  padding: 1em;
-  background: #06a6b5;
-  font-weight: bold;
-  cursor: pointer;
-  /* Icon */
-}
-
-.tab-label:hover {
-  background: #047984;
-}
-
-.tab-label::after {
-  content: "\276F";
-  width: 1em;
-  height: 1em;
-  text-align: center;
-  -webkit-transition: all .35s;
-  transition: all .35s;
-}
-
-.tab-content {
-  max-height: 0;
-  padding: 0 1em;
-  color: #06a6b5;
-  background: white;
-  -webkit-transition: all .35s;
-  transition: all .35s;
-}
-
-.tab-close {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
-  padding: 1em;
-  font-size: 0.75em;
-  background: #06a6b5;
-  cursor: pointer;
-}
-
-.tab-close:hover {
-  background: #047984;
-}
-
-input:checked + .tab-label {
-  background: #047984;
-}
-
-input:checked + .tab-label::after {
-  -webkit-transform: rotate(90deg);
-          transform: rotate(90deg);
-}
-
-input:checked ~ .tab-content {
-  max-height: 100vh;
-  padding: 1em;
 }
 /*# sourceMappingURL=style.css.map */
