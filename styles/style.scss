@@ -1,6 +1,6 @@
-$primary-color: #aed8e7; 
-$secondary-color: #f9f8f7; 
-
+$primary-color: F8F7FF; 
+$secondary-color: #B8B8FF;
+$btn-color:  #FFEBD6;
 
 * {
     box-sizing: border-box;
@@ -21,7 +21,7 @@ h2{
 }
 
 body, html {
-    background: $secondary-color;
+    background: $primary-color;
     min-height: 100vh;
     margin: 0rem;
 }
@@ -57,15 +57,15 @@ body{
    display: flex;
    justify-content: space-between;
    padding: 1rem;
-   background: $primary-color;
+   background: $btn-color;
    font-weight: bold;
    cursor: pointer;
    /* Icon */
    &:hover {
-     background: darken($primary-color, 10%);
+     background: darken($btn-color, 10%);
    }
    &::after {
-     content: "\276F";
+     content: '+';//"\276F";
      width: 1rem;
      height: 1rem;
      text-align: center;
@@ -85,19 +85,19 @@ body{
    justify-content: flex-end;
    padding: 0rem;
    font-size: 0.75rem;
-   background: $primary-color;
+   background: $secondary-color;
    cursor: pointer;
    &:hover {
-     background: darken($primary-color, 10%);
+     background: darken($secondary-color, 10%);
    }
  }
 }
 
 input:checked {
  + .tab-label {
-   background: darken($primary-color, 10%);
+   background: darken($btn-color, 10%);
    &::after {
-     transform: rotate(90deg);
+     transform: rotate(45deg);
    }
  }
  ~ .tab-content {
@@ -148,7 +148,7 @@ form {
   
   input:focus{
     outline: none;
-    border-color: $primary-color;
+    border-color: $btn-color;
   }
   #div-center-btn{
     display: flex;
@@ -159,7 +159,7 @@ form {
     width: 10rem;
     border-radius: 0.5rem;
     height: 2rem;
-    background-color: darken($primary-color, 10%);
+    background-color: darken($btn-color, 10%);
     font-weight: bold;
     cursor: pointer;
   }
@@ -198,7 +198,7 @@ form {
   //cursor: pointer;
   min-width: 12rem;
   min-height: 15rem;
-  background: $primary-color;
+  background: $secondary-color;
   display: flex;
   padding: 1rem;
   flex-direction: column;
@@ -217,7 +217,7 @@ form {
 
   .readLabel{
     opacity: 0.5;
-    background-color: $primary-color;
+    background-color: inherit;
     width: fit-content;
     cursor: pointer;
   }
