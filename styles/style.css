@@ -69,14 +69,14 @@ body {
       -ms-flex-pack: justify;
           justify-content: space-between;
   padding: 1rem;
-  background: #FFEBD6;
+  background: #FFCEAD;
   font-weight: bold;
   cursor: pointer;
   /* Icon */
 }
 
 .tab-label:hover {
-  background: #ffd2a3;
+  background: #ffb07a;
 }
 
 .tab-label::after {
@@ -115,7 +115,7 @@ body {
 }
 
 input:checked + .tab-label {
-  background: #ffd2a3;
+  background: #ffb07a;
 }
 
 input:checked + .tab-label::after {
@@ -180,7 +180,7 @@ form input {
 
 form input:focus {
   outline: none;
-  border-color: #FFEBD6;
+  border-color: #FFCEAD;
 }
 
 form #div-center-btn {
@@ -197,7 +197,7 @@ form #submit-btn {
   width: 10rem;
   border-radius: 0.5rem;
   height: 2rem;
-  background-color: #ffd2a3;
+  background-color: #ffb07a;
   font-weight: bold;
   cursor: pointer;
 }
