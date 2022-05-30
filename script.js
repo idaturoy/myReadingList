@@ -1,3 +1,10 @@
+//Refactoring using jQuery
+//Add page count
+//Collaps when books is read
+//Fix add new book button
+//Book recommendation based on books you have read (API to Goodread) https://www.programmableweb.com/news/10-most-popular-apis-books-2022/brief/2020/01/26
+
+
 //VARIABLES
 const form = document.getElementById("form");
 const divBookShelf = document.getElementsByClassName("bookShelf")[0];
@@ -13,8 +20,8 @@ const divBookShelf = document.getElementsByClassName("bookShelf")[0];
 
 form.addEventListener("submit", e =>{
     let newBook = createNewBook();
-    addBookToLibrary(newBook);
-    addBook(newBook);
+    stableBookOnShelf(newBook);
+    stableBook(newBook);
     form.reset();
     e.preventDefault();
     //document.getElementById("form").hidden = true;
@@ -25,45 +32,82 @@ function createNewBook(){
     /*     //Gets data from form filled by user
         let formInput = Array.from(document.querySelectorAll('#form input')).reduce((acc, input) => ({...acc, [input.id]: input.value }), {}); */
     
-        const title = document.getElementById('form-title').value;
-        const author = document.getElementById('form-author').value;
-        const pages = document.getElementById('form-pages').value;
-        const genre = document.getElementById('form-genre').value;
-        const [titleCapitalized, authorCapitalized] = capitalizeNames(title, author);
-    
-        const newBook = new Book(titleCapitalized, authorCapitalized, pages, genre, isChecked());
-        return newBook;
+    const title = document.getElementById('form-title').value;
+    const author = document.getElementById('form-author').value;
+    const pages = document.getElementById('form-pages').value;
+    const genre = document.getElementById('form-genre').value;  
+    const readStatus = document.getElementById('form-readStatus').checked;  
+    const bookID = new Date().getTime();
+    const newBook = new Book(title, author, pages, genre, readStatus, bookID);
+    const [titleCapitalized, authorCapitalized] = newBook.capitalizeNames(title, author);
+    newBook.title = titleCapitalized;
+    newBook.author = authorCapitalized;
+    return newBook;
 }
 
-function Book(title, author, pages, genre, readStatus){
+class Book {
+    constructor(title, author, pages, genre, readStatus, bookID){
     this.title = title;
     this.author = author;
     this.pages = pages;
     this.genre = genre;
     this.readStatus = readStatus;
-    this.bookID = undefined;
-}
-
-function capitalizeNames(title, authorName){
-    //Only first letter in string
-    let titleCapitalized = title[0].toUpperCase() + title.slice(1);
-    //capital letter on every word in string
-    let authorArray = (authorName).split(" ");
-    for (let i = 0; i < authorArray.length; i++) {
-        authorArray[i] = authorArray[i][0].toUpperCase() + authorArray[i].substr(1);
+    this.bookID = bookID;
     }
-    return [titleCapitalized, authorArray.join(" ")]
+    
+    capitalizeNames(){
+        //Only first letter in string
+        let titleCapitalized = this.title[0].toUpperCase() + this.title.slice(1);
+        //capital letter on every word in string
+        let authorArray = (this.author).split(" ");
+        for (let i = 0; i < authorArray.length; i++) {
+            authorArray[i] = authorArray[i][0].toUpperCase() + authorArray[i].substr(1);
+        }
+        return [titleCapitalized, authorArray.join(" ")]
+    }
+
+    getReadStatus(){
+        return this.readStatus;
+    }
+    //Set read status for presentation
+    setReadStatus(){
+        switch (this.readStatus) {
+            case 1:
+                return 'read'
+                break;
+            case 0:
+                return 'started'
+                break
+            default:
+                return 'not read'
+                break;
+        }
+    }
 }
 
-function addBookToLibrary(book){
-    let myLibrary = getLibrary();
-    myLibrary.push(book);
-    const currentTime = new Date();
-    book.bookID = currentTime.getTime();
-    saveToLocalStorage(myLibrary);
+
+//Init book in library memory
+function stableBookOnShelf(book){
+    let myBooks = getLibrary();
+    let currentBooks = myBooks[0];
+    let pastBooks = myBooks[1];
+    let futureBooks = myBooks[2];
+/*     switch (book.getReadStatus()) {
+        case 0:
+            currentBooks.push(book);
+            break;
+        case 1:
+            pastBooks.push(book);
+            break;
+        default:
+            futureBooks.push(book);
+            break;
+    } */
+    myBooks.push(book);
+    saveToLocalStorage(myBooks);
 }
 
-function addBook(book){
+function stableBook(book){
     let bookDiv = document.createElement('div');
     bookDiv.className = 'bookDiv';
     bookDiv.id = `${book.bookID}`;
@@ -90,6 +134,8 @@ function addBook(book){
         else if (readLabel.innerText === 'not read yet'){
             readLabel.innerText = 'read';
             readLabel.style.color = "green";
+            bookDiv.style.background = 'darken($primary-color, 10%)';
+
         };
 
         toggleReadStatus(removeBtn.parentNode.parentNode.id, readLabel.innerText);
@@ -116,8 +162,8 @@ function isChecked(){
 }
 
 function getBookIndex(bookDivID){
-    let myLibrary = getLibrary();
-    return myLibrary.map(book =>{
+    let myBooks = getLibrary();
+    return myBooks.map(book =>{
         return book.bookID;
     }).indexOf(Number(bookDivID));
 }
@@ -128,37 +174,36 @@ function removeBookCard(bookDivID){
 
 function removeFromLibrary(bookDivID){
     let removeIndex = getBookIndex(bookDivID);
-    let myLibrary = getLibrary();
-    myLibrary.splice(removeIndex, 1)
-    saveToLocalStorage(myLibrary);
+    let myBooks = getLibrary();
+    myBooks.splice(removeIndex, 1)
+    saveToLocalStorage(myBooks);
 }
 
 function toggleReadStatus(bookDivID, newStatus){
     const indexBookToToggle = getBookIndex(bookDivID);
-    let myLibrary = getLibrary();
-    myLibrary[indexBookToToggle].readStatus = newStatus;
-    saveToLocalStorage(myLibrary);
+    let myBooks = getLibrary();
+    myBooks[indexBookToToggle].readStatus = newStatus;
+    saveToLocalStorage(myBooks);
 }
 
 function getLibrary(){
-    let myLibrary;
-    if(localStorage.getItem('myLibrary') === null){
-        myLibrary = [];
+    let myBooks = [];
+    if(localStorage.getItem('myBooks') === null){
+        return myBooks;
     }else{
-        myLibrary = JSON.parse(localStorage.getItem("myLibrary"));
+        return JSON.parse(localStorage.getItem("myBooks"));
     }
-    return myLibrary;
 }
 
 const saveToLocalStorage = (libraryToStore) => {
-    localStorage.setItem("myLibrary", JSON.stringify(libraryToStore));
+    localStorage.setItem("myBooks", JSON.stringify(libraryToStore));
 }
 
 window.onload = function displayLibrary(){
-    let myLibrary = getLibrary();
-    if (myLibrary !== null){
-        for(let i = 0; i < myLibrary.length; i++){
-            addBook(myLibrary[i]);
+    let myBooks = getLibrary();
+    if (myBooks !== null){
+        for(let i = 0; i < myBooks.length; i++){
+            stableBook(myBooks[i]);
         }
     }
 }
