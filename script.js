@@ -7,7 +7,9 @@
 
 //VARIABLES
 const form = document.getElementById("form");
-const divBookShelf = document.getElementsByClassName("bookShelf")[0];
+const currentBooks = document.getElementsByClassName("currentBooks")[0];
+const pastBooks = document.getElementsByClassName("pastBooks")[0];
+const futureBooks = document.getElementsByClassName("futureBooks")[0];
 
 //EVENT LISTENERS
 /* document.getElementById("addBook-btn").addEventListener("click", () => {
@@ -71,16 +73,10 @@ class Book {
     }
     //Set read status for presentation
     setReadStatus(){
-        switch (this.readStatus) {
-            case 1:
-                return 'read'
-                break;
-            case 0:
-                return 'started'
-                break
-            default:
-                return 'not read'
-                break;
+        if (this.readStatus) {
+            return 'read';
+        }else{
+            return 'not read';
         }
     }
 }
@@ -89,20 +85,6 @@ class Book {
 //Init book in library memory
 function stableBookOnShelf(book){
     let myBooks = getLibrary();
-    let currentBooks = myBooks[0];
-    let pastBooks = myBooks[1];
-    let futureBooks = myBooks[2];
-/*     switch (book.getReadStatus()) {
-        case 0:
-            currentBooks.push(book);
-            break;
-        case 1:
-            pastBooks.push(book);
-            break;
-        default:
-            futureBooks.push(book);
-            break;
-    } */
     myBooks.push(book);
     saveToLocalStorage(myBooks);
 }
@@ -114,7 +96,7 @@ function stableBook(book){
     let bookInfo = document.createElement('p');
     bookInfo.className = 'bookInfo';
 
-    bookInfo.innerHTML = `<b>${book.title}</b> <br> ${book.author} <br> ${book.genre} <br> ${book.pages} pages`;
+    bookInfo.innerHTML = `<b>${book.title}</b> by ${book.author} <br> Pages: ${book.pages} <br> ${book.genre} `;
     bookDiv.appendChild(bookInfo);
     
     let featureDiv = document.createElement('div');
@@ -122,9 +104,14 @@ function stableBook(book){
 
     let readLabel = document.createElement('label');
     readLabel.className = 'readLabel';
-    readLabel.innerHTML = `${book.readStatus}`;
-    if (readLabel.innerText === 'read'){
-        readLabel.style.color = "green";}
+    //readLabel.innerHTML = book.readStatus;
+    if (book.readStatus === true){
+        readLabel.innerHTML = 'read';
+        readLabel.style.color = "green";
+    }else{
+        readLabel.innerHTML = 'not read yet';
+        readLabel.style.color = "black"; 
+    }
  
     readLabel.addEventListener("click", () =>{
         if (readLabel.innerText === 'read'){
@@ -152,8 +139,19 @@ function stableBook(book){
     //const addBtnDiv = document.getElementById("addBook-btn");
     featureDiv.appendChild(removeBtn);
     bookDiv.appendChild(featureDiv);
-    //Finally, add the book to the bookshelf
-    divBookShelf.appendChild(bookDiv);
+    //Finally, add the book to correct bookshelf
+        switch (book.getReadStatus) {
+        case 0:
+            currentBooks.appendChild(bookDiv);
+            break;
+        case 1:
+            pastBooks.appendChild(bookDiv);
+            break;
+        default:
+            futureBooks.appendChild(bookDiv);
+            break;
+    }
+    //divBookShelf.appendChild(bookDiv);
 } 
 
 function isChecked(){
