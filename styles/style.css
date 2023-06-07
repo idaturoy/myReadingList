@@ -28,6 +28,15 @@ body {
   width: 80%;
 }
 
+footer {
+  padding: 1rem;
+  display: -ms-grid;
+  display: grid;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
 .welcomeDiv {
   padding: 3rem 3rem 0.5rem 3rem;
   text-align: center;
