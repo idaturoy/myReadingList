@@ -1,4 +1,4 @@
-$primary-color: F8F7FF; 
+$primary-color: #bab8cb; 
 $secondary-color: #B8B8FF;
 $btn-color:  #FFCEAD;
 
@@ -6,37 +6,25 @@ $btn-color:  #FFCEAD;
     box-sizing: border-box;
 }
 
+body, html {
+  min-height: 100vh;
+  margin: 0;
+}
+body{
+margin: 0 auto;
+max-width: 80%;
+}
+
 h1, h2, p, span{
-  font-family: "courier";
+  font-family: "courier", sans-serif;
 }
 
 h2{
-  font-size: 1rem;
   margin: 0;
-}
-
-#welcome-text{
-  color: black;
-  opacity: 0.5;
-}
-
-body, html {
-    background: $primary-color;
-    min-height: 100vh;
-    margin: 0rem;
-}
-body{
-  margin: 0 auto;
-  width: 80%;
 }
 
 footer{
   padding: 1rem;
-  display: grid;
-  justify-content: center;
-}
-.welcomeDiv{
-  padding: 3rem 3rem 0.5rem 3rem;
   text-align: center;
 }
 
@@ -44,18 +32,19 @@ footer{
   display: inline-block;
   border-style: none;
 }
-#center-container{
-  display: flex;
-  justify-content: center;
+.container{
+  text-align: center;
 }
 .tabs {
  border-radius: .5rem;
  overflow: hidden;
  box-shadow: 0 4px 4px -2px rgba(0,0,0,0.5);
- width: 25rem;
+ max-width: 25rem;
+ margin: 0 auto;
+
 }
 .tab {
- width: 100%;
+ max-width: 100%;
  color: black;
  overflow: hidden;
 
@@ -83,13 +72,12 @@ footer{
    padding: 0 1rem;
    background: white;
    display: none;
-
    transition: all .35s;
  }
  &-close {
    display: flex;
    justify-content: flex-end;
-   padding: 0rem;
+   padding: 0;
    font-size: 0.75rem;
    background: $secondary-color;
    cursor: pointer;
@@ -115,16 +103,6 @@ input:checked {
 form {
   max-width: 100%;
 
-/*     #close-btn{
-      border: none;
-      color: red;
-      font-size: 2rem;
-      cursor: pointer;
-      left: 20rem;
-      bottom: 5rem;
-      position: relative;
-      background-color: inherit;
-    } */
   ul {
     list-style: none;
     padding: 0;
@@ -152,15 +130,17 @@ form {
     height: 2rem;
   }
   
-  input:focus{
+  input:focus {
     outline: none;
     border-color: $btn-color;
   }
-  #div-center-btn{
+
+  .div-center-btn {
     display: flex;
     justify-content: center;
   }
-  #submit-btn{
+
+  #submit-btn {
     font-size: 100%;
     width: 10rem;
     border-radius: 0.5rem;
@@ -183,33 +163,27 @@ form {
 }
 
 
-#bookShelfTitle{
-  padding: 1rem 0 0 3rem; 
-}
-.bookShelf{
+.bookShelf {
   padding: 2rem;
   display: flex;
   flex-wrap: wrap;
-  flex-direction: row;
   height: inherit;
-  width: 100%;
+  max-width: 100%;
   justify-content: center;
-
 }
 
-.bookDiv{
-  margin: 1rem;
+.bookDiv {
+  margin: 0.5rem;
   border-radius: 0.5rem;
-  font-family: courier;
-  //cursor: pointer;
   min-width: 12rem;
   min-height: 15rem;
-  background: $secondary-color;
+  background: white;
+  border-style: solid;
   display: flex;
   padding: 1rem;
   flex-direction: column;
   justify-content: space-between;
-  //box-shadow: 12px 12px 2px 1px rgba(39, 174, 223, 0.2);
+  box-shadow: 0 4px 4px -2px rgba(0,0,0,0.5);
 
   .bookInfo{
     max-width: 10rem;
@@ -221,16 +195,26 @@ form {
     display: flex;
   }
 
-  .readLabel{
+  .readLabel {
     opacity: 0.5;
     background-color: inherit;
     width: fit-content;
     cursor: pointer;
+  font-family: courier;
+
   }
-  button{
+  button {
     width: fit-content;
     border: none;
     cursor: pointer;
     background-color: inherit;
   }
+}
+
+
+@media (max-width: 640px) {
+ .bookDiv {
+    min-width: 25rem;
+    min-height: 10rem;
+ }
 }

@@ -5,17 +5,16 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" type="text/css" href="./styles/style.css"/>
         <script src="https://kit.fontawesome.com/2317bdbbff.js" crossorigin="anonymous"></script>
-        <title>My Reading List</title>
+        <title>Book List</title>
     </head>
     <body>
-        <div class="welcomeDiv">
-            <h1>Your reading list</h1>
-        </div>
-        <div id="center-container">
+        <div class="container">
+            <h1>Book list</h1>
+
             <div class="tabs">
                 <div class="tab">
                 <input type="checkbox" id="chck1" hidden>
-                <label class="tab-label" for="chck1"><h2>Add New Book</h2></label>
+                <label class="tab-label" for="chck1"><h2>Add new</h2></label>
                 <div class="tab-content">
                     <form id="form">
                         <!-- <h2>Add a New Book</h2> -->
@@ -48,12 +47,12 @@
                             </li>
                             <li id="checkbox-readStat">
                                 <label for="readStatus">
-                                    <input type="checkbox" id="form-readStatus" name="form-readStatus" value="read"></input>
+                                    <input type="checkbox" id="form-readStatus" value="read"></input>
                                     <span>Already read?</span>
                                 </label>
                             </li>
                         </ul>
-                        <div id='div-center-btn' class='round-style'>
+                        <div class='div-center-btn'>
                             <button id="submit-btn" type="submit">Add</button>
                         </div>
                     </form>
@@ -61,12 +60,9 @@
                 </div>
             </div>
         </div>
-
-
-    <!-- <div id=bookShelfTitle><h1>Books To Read</h1></div> -->
         
         <div class="bookShelf">
-<!--             <button type="button" id="addBook-btn" class="bookDiv"><h2>Add a New Book</h2></button> -->
+            <!-- This div fill be filled with bookdivs by js -->
 
         </div>
 
